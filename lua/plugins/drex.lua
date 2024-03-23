@@ -14,6 +14,18 @@ local M = {
 	dependencies = {
 		"kyazdani42/nvim-web-devicons"
 	},
+	opts = {
+		icons = {
+			file_default = "",
+			dir_open = "",
+			dir_closed = "",
+			link = "",
+			others = "",
+		},
+	},
+	config = function(_, opts)
+		require("drex.config").configure(opts)
+	end
 }
 
 
