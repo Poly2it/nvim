@@ -1,3 +1,6 @@
+local colors = require("adwaita.utils").gen_colors()
+
+
 local M = {
 	"akinsho/toggleterm.nvim",
 	lazy = true,
@@ -11,23 +14,26 @@ local M = {
 	},
 	version = "*", 
 	opts = {
-		shade_terminals = true,
+		shade_terminals = false,
 		open_mapping = '<C-\\>',
 		start_in_insert = true,
 		direction = "horizontal",
-		shading_factor = 0,
 
 		persist_size = true,
 		persist_mode = true,
-
+		highlights = {
+			Normal = {
+				guibg = colors.libadwaita_popup,
+			},
+		},
 		winbar = {
-			enabled = false,
+			enabled = true,
 			name_formatter = function(term)
 				return term.name
 			end,
 		},
 	},
-	config = function ()
+	config = function(_, opts)
 		require("toggleterm").setup(opts)
 	end,
 }
