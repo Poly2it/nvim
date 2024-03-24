@@ -100,8 +100,10 @@ local bash_options = {
 }
 
 
-for option, value in pairs(bash_options) do
-	vim.opt[option] = value
+if (not vim.loop.os_uname().sysname == "Linux") then
+	for option, value in pairs(bash_options) do
+		vim.opt[option] = value
+	end
 end
 
 
