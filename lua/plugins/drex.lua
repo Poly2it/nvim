@@ -2,7 +2,7 @@ local M = {
 	"TheBlob42/drex.nvim",
 	commit = "acccc12",
 	lazy = true,
-	cmd = { 
+	cmd = {
 		"Drex",
 		"DrexDrawerClose",
 		"DrexDrawerFindFile",

@@ -12,7 +12,7 @@ local M = {
 		"ToggleTermSetNames",
 		"ToggleTermToggleAll",
 	},
-	version = "*", 
+	version = "*",
 	opts = {
 		shade_terminals = false,
 		open_mapping = '<C-\\>',

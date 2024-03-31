@@ -3,9 +3,9 @@ local M = {
 	dependencies = { "dcampos/nvim-snippy" },
 	lazy = true,
 	config = function()
-		cmp = require("cmp")
-		snippy = require("snippy")
-		lspkind = require("lspkind")
+		local cmp = require("cmp")
+		local snippy = require("snippy")
+		local lspkind = require("lspkind")
 
 		local cmp_kinds = {
 			Text = "  ",
@@ -48,14 +48,16 @@ local M = {
 						-- Importable
 						vim_item.abbr = string.sub(vim_item.abbr, 4, #vim_item.abbr - 1) .. " "
 					else
-						-- Available
-						vim_item.abbr = string.sub(vim_item.abbr, 2, #vim_item.abbr)
+						if (string.sub(vim_item.abbr, 1, 2) == " ") then
+							-- Available
+							vim_item.abbr = string.sub(vim_item.abbr, 2, #vim_item.abbr)
+						end
 					end
 					if (string.sub(vim_item.abbr, #vim_item.abbr, #vim_item.abbr) == "~") then
 						-- With automatic fields
 						vim_item.abbr = string.sub(vim_item.abbr, 1, #vim_item.abbr - 1) .. "  "
 					end
-					
+
 					local kind = lspkind.cmp_format({
 						mode = "symbol",
 						maxwidth = 50,
@@ -67,7 +69,7 @@ local M = {
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or " ") .. " "
 					kind.menu = ""
-					
+
 					return kind
 				end,
 			},
