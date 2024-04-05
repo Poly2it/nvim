@@ -1,12 +1,14 @@
+local colors = require_path(vim.fn.stdpath("config") .. "/lua/common.lua").colors
+
+
 local M = {
 	"nvim-lualine/lualine.nvim",
 	lazy = true,
-	event = { "UiEnter" },
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	event = { "UiEnter", },
+	dependencies = {},
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = "adwaita",
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			disabled_filetypes = {
@@ -23,7 +25,39 @@ local M = {
 				statusline = 1000,
 				tabline = 1000,
 				winbar = 1000,
-			}
+			},
+			theme = {
+				normal = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.light_1, gui = "bold" },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+				},
+				insert = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.orange_3, gui = "bold" },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.light_7,  gui = "bold" },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.light_7,  gui = "bold" },
+				},
+				visual = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.blue_3,  gui = "bold" },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+				},
+				replace = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.red_3,   gui = "bold" },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+				},
+				command = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.green_3, gui = "bold" },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.light_7, gui = "bold" },
+				},
+				inactive = {
+					a = { bg = colors.libadwaita_dark_alt, fg = colors.libadwaita_dark_alt },
+					b = { bg = colors.libadwaita_dark_alt, fg = colors.libadwaita_dark_alt },
+					c = { bg = colors.libadwaita_dark_alt, fg = colors.libadwaita_dark_alt },
+				},
+			},
 		},
 		sections = {
 			lualine_a = { "mode" },
@@ -31,7 +65,7 @@ local M = {
 			lualine_c = {},
 			lualine_x = {},
 			lualine_y = { { "branch", icon = { "" } }, "diff" },
-			lualine_z = { "diagnostics" }
+			lualine_z = { "diagnostics" },
 		},
 		inactive_sections = {
 			lualine_a = { "filename" },
@@ -44,34 +78,8 @@ local M = {
 		tabline = {},
 		winbar = {},
 		inactive_winbar = {},
-		extensions = {}
+		extensions = {},
 	},
-	config = function(_, opts)
-		local colors = require("adwaita.utils").gen_colors()
-		local theme = require("lualine.themes.adwaita")
-		
-		theme.normal.a.bg = colors.libadwaita_dark_alt
-		theme.normal.b.bg = colors.libadwaita_dark_alt
-
-		theme.insert.a.bg = colors.libadwaita_dark_alt
-		theme.insert.b.bg = colors.libadwaita_dark_alt
-
-		theme.visual.a.bg = colors.libadwaita_dark_alt
-		theme.visual.b.bg = colors.libadwaita_dark_alt
-
-		theme.normal.a.fg = colors.light_1
-		theme.normal.b.fg = colors.light_7
-
-		theme.insert.a.fg = colors.orange_3
-		theme.insert.b.fg = colors.light_7
-
-		theme.visual.a.fg = colors.blue_3
-		theme.visual.b.fg = colors.light_7
-
-		opts.options.theme = theme
-
-		require("lualine").setup(opts)
-	end,
 }
 
 

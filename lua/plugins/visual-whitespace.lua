@@ -7,7 +7,7 @@ local M = {
 		highlight = { link = "Visual" },
 		space_char = "·",
 		tab_char = "│      ",
-		nl_char = ""
+		nl_char = "",
 	},
 	config = true,
 }

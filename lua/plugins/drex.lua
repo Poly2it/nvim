@@ -11,9 +11,7 @@ local M = {
 		"DrexDrawerToggle",
 		"DrexMark",
 	},
-	dependencies = {
-		"kyazdani42/nvim-web-devicons"
-	},
+	dependencies = {},
 	opts = {
 		icons = {
 			file_default = "",

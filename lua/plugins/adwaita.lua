@@ -7,7 +7,7 @@ M = {
 		vim.cmd([[
 			colorscheme adwaita
 		]])
-	end
+	end,
 }
 
 

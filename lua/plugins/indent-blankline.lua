@@ -1,5 +1,5 @@
-M = { 
-	"lukas-reineke/indent-blankline.nvim", 
+M = {
+	"lukas-reineke/indent-blankline.nvim",
 	lazy = true,
 	event = { "VeryLazy", "BufReadPre", "BufNewFile", },
 	main = "ibl",

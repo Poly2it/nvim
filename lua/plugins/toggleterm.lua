@@ -4,6 +4,7 @@ local colors = require("adwaita.utils").gen_colors()
 local M = {
 	"akinsho/toggleterm.nvim",
 	lazy = true,
+	event = { "VeryLazy" },
 	cmd = {
 		"ToggleTerm",
 		"ToggleTermSendCurrentLine",
@@ -35,6 +36,8 @@ local M = {
 	},
 	config = function(_, opts)
 		require("toggleterm").setup(opts)
+		vim.api.nvim_command("ToggleTerm")
+		vim.api.nvim_command("ToggleTerm")
 	end,
 }
 
@@ -105,16 +108,6 @@ if (not vim.loop.os_uname().sysname == "Linux") then
 		vim.opt[option] = value
 	end
 end
-
-
--- Preload terminal instance
-vim.api.nvim_create_autocmd("UiEnter", {
-	pattern = "*",
-	callback = function()
-		vim.api.nvim_command("ToggleTerm")
-		vim.api.nvim_command("ToggleTerm")
-	end,
-})
 
 
 return M
