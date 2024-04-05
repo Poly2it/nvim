@@ -38,6 +38,25 @@ end
 
 ---@param icon icon
 ---@param overwrite boolean
+local function icon_update_highlight_legacy(icon, overwrite)
+	if (icon.meta.highlight == nil) or (overwrite == true) then
+		if icon.highlight == nil then
+			icon.meta.highlight = "DevIcon" .. icon.name
+			vim.api.nvim_set_hl(0, icon.meta.highlight, {
+				fg = icon.color,
+			})
+		else
+			icon.meta.highlight = "DevIcon" .. icon.name
+			vim.api.nvim_set_hl(0, icon.meta.highlight, {
+				link = icon.highlight,
+			})
+		end
+	end
+end
+
+
+---@param icon icon
+---@param overwrite boolean
 local function icon_update_highlight(icon, overwrite)
 	if (icon.meta.highlight == nil) or (overwrite == true) then
 		if icon.highlight == nil then
@@ -62,6 +81,12 @@ end
 function M.setup(opts)
 	local user_icons = opts.icons or {}
 	local salt_icons = M.icons
+
+	local version = vim.version()
+	print(version.major, version.minor)
+	if version.major == 0 and version.minor < 10 then
+		icon_update_highlight = icon_update_highlight_legacy
+	end
 
 	if opts.use_defaults == false then
 		salt_icons = user_icons
