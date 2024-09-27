@@ -11,12 +11,8 @@ local M = {
 			separator = "",
 			group = " ",
 		},
-		window = {
-			border = "none",
-			position = "bottom",
-			margin = { 0, 0, 0, 0 },
-			padding = { 1, 1, 1, 1 },
-			winblend = 0,
+		win = {
+			padding = { 0, 0 },
 			zindex = 1000,
 		},
 		layout = {

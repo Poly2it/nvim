@@ -26,6 +26,7 @@ local M = {
 			"cpp",
 			"rust",
 			"lua",
+			"python",
 			"make",
 			"cmake",
 			"vim",
@@ -34,12 +35,17 @@ local M = {
 			"markdown",
 			"markdown_inline",
 			"json",
+			"toml",
+			"nix",
 		},
 		sync_install = false,
 		auto_install = false,
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
+		},
+		indent = {
+			enable = true,
 		},
 	},
 	config = function(_, opts)
