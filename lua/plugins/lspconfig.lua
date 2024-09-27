@@ -30,7 +30,7 @@ local M = {
 		})
 
 		lspconfig.lua_ls.setup({
-			root_dir = util.root_pattern(".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git"),
+			root_dir = util.root_pattern("shell.nix", ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git"),
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
 				if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
@@ -54,6 +54,10 @@ local M = {
 				}
 			}
 		})
+
+		lspconfig.nixd.setup({})
+
+		lspconfig.basedpyright.setup({})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
