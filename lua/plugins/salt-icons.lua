@@ -85,6 +85,9 @@ local M = {
 				["zip"]   = { icon = "", color = colors.light_2  },
 				["tar"]   = { icon = "", color = colors.light_2  },
 
+				["s"] = { icon = "", color = colors.light_2 },
+				["S"] = { icon = "", color = colors.light_2 },
+				["asm"] = { icon = "", color = colors.light_2 },
 				["pyc"]  = { icon = "", color = colors.light_2 },
 				["wasm"] = { icon = "", color = colors.purple_3 },
 
