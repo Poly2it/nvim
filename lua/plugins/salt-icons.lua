@@ -130,6 +130,9 @@ local M = {
 
 				["mp3"] = { icon = "", color = colors.purple_1 },
 				["wav"] = { icon = "", color = colors.purple_1 },
+
+				["patch"] = { icon = "󰶯", color = colors.red_1 },
+				["diff"] = { icon = "󰶯", color = colors.red_1 },
 			},
 			by_filestem = {
 				["readme"]    = { icon = "", color = colors.light_2  },
