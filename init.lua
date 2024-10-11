@@ -12,7 +12,7 @@ end
 function require_path(path)
 	local package_path = package.path
 
-	local last_delimiter = path:match'^.*()[/\\]'
+	local last_delimiter = path:match("^.*()[/\\]")
 	local path_stem = string.sub(path, last_delimiter + 1)
 
 	package.path = package.path .. ";" .. path

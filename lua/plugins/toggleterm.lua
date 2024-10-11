@@ -16,7 +16,7 @@ local M = {
 	version = "*",
 	opts = {
 		shade_terminals = false,
-		open_mapping = '<C-\\>',
+		open_mapping = "<C-\\>",
 		start_in_insert = true,
 		direction = "horizontal",
 

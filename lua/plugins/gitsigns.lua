@@ -6,7 +6,7 @@ local M = {
 		"Gitsigns"
 	},
 	config = function (_, opts)
-		require('gitsigns').setup()
+		require("gitsigns").setup()
 	end
 }
 
