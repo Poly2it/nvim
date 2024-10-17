@@ -25,6 +25,7 @@
         lua-language-server
         nixd
         basedpyright
+        rust-analyzer
       ];
     in
     {
