@@ -1,6 +1,5 @@
 local M = {
-	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-	commit = "6f3defec",
+	"Poly2it/lsp_lines",
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile", },
 	config = function()
