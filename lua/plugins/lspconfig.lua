@@ -39,20 +39,20 @@ local M = {
 
 				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 					runtime = {
-						version = "LuaJIT"
+						version = "LuaJIT",
 					},
 					workspace = {
 						checkThirdParty = false,
 						library = {
-							vim.env.VIMRUNTIME
-						}
-					}
+							vim.env.VIMRUNTIME,
+						},
+					},
 				})
 			end,
 			settings = {
 				Lua = {
-				}
-			}
+				},
+			},
 		})
 
 		lspconfig.nixd.setup({})
@@ -63,10 +63,24 @@ local M = {
 			settings = {
 				['rust-analyzer'] = {
 					diagnostics = {
-						enable = true;
-					}
+						enable = true,
+					},
+					rustfmt = {
+						extraArgs = { "tab_spaces=8 +nightly", },
+					},
 				}
 			}
+		})
+		vim.g.rust_recommended_style = 0
+
+		vim.api.nvim_create_autocmd('FileType', {
+			pattern = 'nix',
+			desc = 'Nix options',
+			callback = function()
+				if not vim.b.editorconfig then
+					vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab textwidth=180')
+				end
+			end,
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {

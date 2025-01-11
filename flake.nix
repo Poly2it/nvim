@@ -10,8 +10,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
     inherit (pkgs) lib;
-    neovim = pkgs.neovim.overrideAttrs (oldAttrs:
-    let
+    neovim = pkgs.neovim.overrideAttrs (oldAttrs: let
       runtimeDependencies = with pkgs; [
         git
 
@@ -26,12 +25,22 @@
         nixd
         basedpyright
         rust-analyzer
+        cargo
+        rustfmt
+        rustc
       ];
-    in
-    {
+    in {
       pname = "neovim-polybit";
-      nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ runtimeDependencies;
-      installPhase = (oldAttrs.installPhase or "") + lib.concatStringsSep "\n" (map (x: "ln -s ${x.out}/bin/* $out/bin") runtimeDependencies);
+      nativeBuildInputs =
+        (oldAttrs.nativeBuildInputs or [])
+        ++ runtimeDependencies;
+      installPhase =
+        (oldAttrs.installPhase or "")
+        + (
+          runtimeDependencies
+          |> map (x: "ln -s ${x.out}/bin/* $out/bin")
+          |> lib.concatStringsSep "\n"
+        );
       postFixup = ''
         wrapProgram $out/bin/nvim --prefix PATH : ${pkgs.lib.makeBinPath runtimeDependencies}
       '';
