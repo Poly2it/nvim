@@ -73,6 +73,8 @@ local M = {
 		})
 		vim.g.rust_recommended_style = 0
 
+		lspconfig.ts_ls.setup({})
+
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'nix',
 			desc = 'Nix options',

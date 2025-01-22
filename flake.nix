@@ -28,6 +28,8 @@
         cargo
         rustfmt
         rustc
+
+        typescript-language-server
       ];
     in {
       pname = "neovim-polybit";
