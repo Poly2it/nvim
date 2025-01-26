@@ -8,7 +8,7 @@
   outputs = { nixpkgs, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs { inherit system; config.allowBroken = true; };
     inherit (pkgs) lib;
     neovim = pkgs.neovim.overrideAttrs (oldAttrs: let
       runtimeDependencies = with pkgs; [
@@ -30,6 +30,18 @@
         rustc
 
         typescript-language-server
+
+        # Rocks
+        lua51Packages.luarocks-nix
+        lua51Packages.magick
+        lua5_1
+
+        # image.nvim
+        imagemagick
+        mermaid-cli
+        plantuml
+        d2
+        gnuplot
       ];
     in {
       pname = "neovim-polybit";

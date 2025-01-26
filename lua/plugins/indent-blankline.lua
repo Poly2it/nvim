@@ -1,4 +1,4 @@
-M = {
+local M = {
 	"lukas-reineke/indent-blankline.nvim",
 	lazy = true,
 	event = { "VeryLazy", "BufReadPre", "BufNewFile", },
