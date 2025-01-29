@@ -74,6 +74,15 @@ local M = {
 		vim.g.rust_recommended_style = 0
 
 		lspconfig.ts_ls.setup({})
+		lspconfig.jsonls.setup({
+			commands = {
+				Format = {
+					function()
+						vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+					end
+				}
+			}
+		})
 
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'nix',

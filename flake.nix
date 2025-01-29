@@ -30,6 +30,7 @@
         rustc
 
         typescript-language-server
+        vscode-langservers-extracted
 
         # Rocks
         lua51Packages.luarocks-nix
